@@ -1,0 +1,572 @@
+/******************************************************************************
+ * Product: Adempiere ERP & CRM Smart Business Solution                       *
+ * Copyright (C) 1999-2007 cyprusbrs, Inc. All Rights Reserved.                *
+ * This program is free software, you can redistribute it and/or modify it    *
+ * under the terms version 2 of the GNU General Public License as published   *
+ * by the Free Software Foundation. This program is distributed in the hope   *
+ * that it will be useful, but WITHOUT ANY WARRANTY, without even the implied *
+ * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.           *
+ * See the GNU General Public License for more details.                       *
+ * You should have received a copy of the GNU General Public License along    *
+ * with this program, if not, write to the Free Software Foundation, Inc.,    *
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.                     *
+ * For the text or an alternative of this public license, you may reach us    *
+ * cyprusbrs, Inc., 2620 Augustine Dr. #245, Santa Clara, CA 95054, USA        *
+ * or via info@cyprusbrs.org or http://www.cyprusbrs.org/license.html           *
+ *****************************************************************************/
+/** Generated Model - DO NOT CHANGE */
+package org.cyprus.mfg.model;
+
+import java.math.BigDecimal;
+import java.sql.ResultSet;
+import java.util.Properties;
+
+import org.cyprusbrs.framework.I_C_Activity;
+import org.cyprusbrs.framework.I_C_BPartner;
+import org.cyprusbrs.framework.I_C_BPartner_Location;
+import org.cyprusbrs.framework.I_C_Campaign;
+import org.cyprusbrs.framework.I_C_ElementValue;
+import org.cyprusbrs.framework.I_C_Project;
+import org.cyprusbrs.framework.I_C_UOM;
+import org.cyprusbrs.framework.I_M_Product;
+import org.cyprusbrs.framework.I_Persistent;
+import org.cyprusbrs.model.MTable;
+import org.cyprusbrs.model.PO;
+import org.cyprusbrs.model.POInfo;
+import org.cyprusbrs.util.Env;
+import org.cyprusbrs.util.KeyNamePair;
+
+/** Generated Model for MFG_WorkOrderResTxnLine
+ *  @author Adempiere (generated) 
+ *  @version Release 1.1 Supported By Cyprus - $Id$ */
+public class X_MFG_WorkOrderResTxnLine extends PO implements I_MFG_WorkOrderResTxnLine, I_Persistent 
+{
+
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 20211210L;
+
+    /** Standard Constructor */
+    public X_MFG_WorkOrderResTxnLine (Properties ctx, int MFG_WorkOrderResTxnLine_ID, String trxName)
+    {
+      super (ctx, MFG_WorkOrderResTxnLine_ID, trxName);
+      /** if (MFG_WorkOrderResTxnLine_ID == 0)
+        {
+			setBasisType (null);
+// I
+			setMFG_WORKORDERTRANSACTION_ID (0);
+			setMFG_WorkOrderOperation_ID (0);
+			setMFG_WorkOrderResTxnLine_ID (0);
+			setM_Product_ID (0);
+			setProcessed (false);
+// N
+			setQtyEntered (Env.ZERO);
+// 1
+			setSeqNo (0);
+        } */
+    }
+
+    /** Load Constructor */
+    public X_MFG_WorkOrderResTxnLine (Properties ctx, ResultSet rs, String trxName)
+    {
+      super (ctx, rs, trxName);
+    }
+
+    /** AccessLevel
+      * @return 3 - Client - Org 
+      */
+    protected int get_AccessLevel()
+    {
+      return accessLevel.intValue();
+    }
+
+    /** Load Meta Data */
+    protected POInfo initPO (Properties ctx)
+    {
+      POInfo poi = POInfo.getPOInfo (ctx, Table_ID, get_TrxName());
+      return poi;
+    }
+
+    public String toString()
+    {
+      StringBuffer sb = new StringBuffer ("X_MFG_WorkOrderResTxnLine[")
+        .append(get_ID()).append("]");
+      return sb.toString();
+    }
+
+	/** Set Trx Organization.
+		@param AD_OrgTrx_ID 
+		Performing or initiating organization
+	  */
+	public void setAD_OrgTrx_ID (int AD_OrgTrx_ID)
+	{
+		if (AD_OrgTrx_ID < 1) 
+			set_Value (COLUMNNAME_AD_OrgTrx_ID, null);
+		else 
+			set_Value (COLUMNNAME_AD_OrgTrx_ID, Integer.valueOf(AD_OrgTrx_ID));
+	}
+
+	/** Get Trx Organization.
+		@return Performing or initiating organization
+	  */
+	public int getAD_OrgTrx_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_AD_OrgTrx_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	/** BasisType AD_Reference_ID=1000034 */
+	public static final int BASISTYPE_AD_Reference_ID=1000034;
+	/** Per Batch = B */
+	public static final String BASISTYPE_PerBatch = "B";
+	/** Per Item = I */
+	public static final String BASISTYPE_PerItem = "I";
+	/** Set Cost Basis Type.
+		@param BasisType 
+		Indicates the option to consume and charge materials and resources
+	  */
+	public void setBasisType (String BasisType)
+	{
+
+		set_Value (COLUMNNAME_BasisType, BasisType);
+	}
+
+	/** Get Cost Basis Type.
+		@return Indicates the option to consume and charge materials and resources
+	  */
+	public String getBasisType () 
+	{
+		return (String)get_Value(COLUMNNAME_BasisType);
+	}
+
+	public I_C_Activity getC_Activity() throws RuntimeException
+    {
+		return (I_C_Activity)MTable.get(getCtx(), I_C_Activity.Table_Name)
+			.getPO(getC_Activity_ID(), get_TrxName());	}
+
+	/** Set Activity.
+		@param C_Activity_ID 
+		Business Activity
+	  */
+	public void setC_Activity_ID (int C_Activity_ID)
+	{
+		if (C_Activity_ID < 1) 
+			set_Value (COLUMNNAME_C_Activity_ID, null);
+		else 
+			set_Value (COLUMNNAME_C_Activity_ID, Integer.valueOf(C_Activity_ID));
+	}
+
+	/** Get Activity.
+		@return Business Activity
+	  */
+	public int getC_Activity_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_C_Activity_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	public I_C_BPartner getC_BPartner() throws RuntimeException
+    {
+		return (I_C_BPartner)MTable.get(getCtx(), I_C_BPartner.Table_Name)
+			.getPO(getC_BPartner_ID(), get_TrxName());	}
+
+	/** Set Business Partner .
+		@param C_BPartner_ID 
+		Identifies a Business Partner
+	  */
+	public void setC_BPartner_ID (int C_BPartner_ID)
+	{
+		if (C_BPartner_ID < 1) 
+			set_Value (COLUMNNAME_C_BPartner_ID, null);
+		else 
+			set_Value (COLUMNNAME_C_BPartner_ID, Integer.valueOf(C_BPartner_ID));
+	}
+
+	/** Get Business Partner .
+		@return Identifies a Business Partner
+	  */
+	public int getC_BPartner_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_C_BPartner_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	public I_C_BPartner_Location getC_BPartner_Location() throws RuntimeException
+    {
+		return (I_C_BPartner_Location)MTable.get(getCtx(), I_C_BPartner_Location.Table_Name)
+			.getPO(getC_BPartner_Location_ID(), get_TrxName());	}
+
+	/** Set Partner Location.
+		@param C_BPartner_Location_ID 
+		Identifies the (ship to) address for this Business Partner
+	  */
+	public void setC_BPartner_Location_ID (int C_BPartner_Location_ID)
+	{
+		if (C_BPartner_Location_ID < 1) 
+			set_Value (COLUMNNAME_C_BPartner_Location_ID, null);
+		else 
+			set_Value (COLUMNNAME_C_BPartner_Location_ID, Integer.valueOf(C_BPartner_Location_ID));
+	}
+
+	/** Get Partner Location.
+		@return Identifies the (ship to) address for this Business Partner
+	  */
+	public int getC_BPartner_Location_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_C_BPartner_Location_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	public I_C_Campaign getC_Campaign() throws RuntimeException
+    {
+		return (I_C_Campaign)MTable.get(getCtx(), I_C_Campaign.Table_Name)
+			.getPO(getC_Campaign_ID(), get_TrxName());	}
+
+	/** Set Campaign.
+		@param C_Campaign_ID 
+		Marketing Campaign
+	  */
+	public void setC_Campaign_ID (int C_Campaign_ID)
+	{
+		if (C_Campaign_ID < 1) 
+			set_Value (COLUMNNAME_C_Campaign_ID, null);
+		else 
+			set_Value (COLUMNNAME_C_Campaign_ID, Integer.valueOf(C_Campaign_ID));
+	}
+
+	/** Get Campaign.
+		@return Marketing Campaign
+	  */
+	public int getC_Campaign_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_C_Campaign_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	public I_C_Project getC_Project() throws RuntimeException
+    {
+		return (I_C_Project)MTable.get(getCtx(), I_C_Project.Table_Name)
+			.getPO(getC_Project_ID(), get_TrxName());	}
+
+	/** Set Project.
+		@param C_Project_ID 
+		Financial Project
+	  */
+	public void setC_Project_ID (int C_Project_ID)
+	{
+		if (C_Project_ID < 1) 
+			set_Value (COLUMNNAME_C_Project_ID, null);
+		else 
+			set_Value (COLUMNNAME_C_Project_ID, Integer.valueOf(C_Project_ID));
+	}
+
+	/** Get Project.
+		@return Financial Project
+	  */
+	public int getC_Project_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_C_Project_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	public I_C_UOM getC_UOM() throws RuntimeException
+    {
+		return (I_C_UOM)MTable.get(getCtx(), I_C_UOM.Table_Name)
+			.getPO(getC_UOM_ID(), get_TrxName());	}
+
+	/** Set UOM.
+		@param C_UOM_ID 
+		Unit of Measure
+	  */
+	public void setC_UOM_ID (int C_UOM_ID)
+	{
+		if (C_UOM_ID < 1) 
+			set_Value (COLUMNNAME_C_UOM_ID, null);
+		else 
+			set_Value (COLUMNNAME_C_UOM_ID, Integer.valueOf(C_UOM_ID));
+	}
+
+	/** Get UOM.
+		@return Unit of Measure
+	  */
+	public int getC_UOM_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_C_UOM_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	/** Set Description.
+		@param Description 
+		Optional short description of the record
+	  */
+	public void setDescription (String Description)
+	{
+		set_Value (COLUMNNAME_Description, Description);
+	}
+
+	/** Get Description.
+		@return Optional short description of the record
+	  */
+	public String getDescription () 
+	{
+		return (String)get_Value(COLUMNNAME_Description);
+	}
+
+	/** Set Comment/Help.
+		@param Help 
+		Comment or Hint
+	  */
+	public void setHelp (String Help)
+	{
+		set_Value (COLUMNNAME_Help, Help);
+	}
+
+	/** Get Comment/Help.
+		@return Comment or Hint
+	  */
+	public String getHelp () 
+	{
+		return (String)get_Value(COLUMNNAME_Help);
+	}
+
+	public I_MFG_WorkOrderTransaction getMFG_WORKORDERTRANSACTION() throws RuntimeException
+    {
+		return (I_MFG_WorkOrderTransaction)MTable.get(getCtx(), I_MFG_WorkOrderTransaction.Table_Name)
+			.getPO(getMFG_WORKORDERTRANSACTION_ID(), get_TrxName());	}
+
+	/** Set MFG_WORKORDERTRANSACTION_ID.
+		@param MFG_WORKORDERTRANSACTION_ID MFG_WORKORDERTRANSACTION_ID	  */
+	public void setMFG_WORKORDERTRANSACTION_ID (int MFG_WORKORDERTRANSACTION_ID)
+	{
+		if (MFG_WORKORDERTRANSACTION_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_MFG_WORKORDERTRANSACTION_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_MFG_WORKORDERTRANSACTION_ID, Integer.valueOf(MFG_WORKORDERTRANSACTION_ID));
+	}
+
+	/** Get MFG_WORKORDERTRANSACTION_ID.
+		@return MFG_WORKORDERTRANSACTION_ID	  */
+	public int getMFG_WORKORDERTRANSACTION_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_MFG_WORKORDERTRANSACTION_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+    /** Get Record ID/ColumnName
+        @return ID/ColumnName pair
+      */
+    public KeyNamePair getKeyNamePair() 
+    {
+        return new KeyNamePair(get_ID(), String.valueOf(getMFG_WORKORDERTRANSACTION_ID()));
+    }
+
+	public I_MFG_WorkOrderOperation getMFG_WorkOrderOperation() throws RuntimeException
+    {
+		return (I_MFG_WorkOrderOperation)MTable.get(getCtx(), I_MFG_WorkOrderOperation.Table_Name)
+			.getPO(getMFG_WorkOrderOperation_ID(), get_TrxName());	}
+
+	/** Set Operation.
+		@param MFG_WorkOrderOperation_ID Operation	  */
+	public void setMFG_WorkOrderOperation_ID (int MFG_WorkOrderOperation_ID)
+	{
+		if (MFG_WorkOrderOperation_ID < 1) 
+			set_Value (COLUMNNAME_MFG_WorkOrderOperation_ID, null);
+		else 
+			set_Value (COLUMNNAME_MFG_WorkOrderOperation_ID, Integer.valueOf(MFG_WorkOrderOperation_ID));
+	}
+
+	/** Get Operation.
+		@return Operation	  */
+	public int getMFG_WorkOrderOperation_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_MFG_WorkOrderOperation_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	/** Set Work Order Resource Transaction Line ID.
+		@param MFG_WorkOrderResTxnLine_ID Work Order Resource Transaction Line ID	  */
+	public void setMFG_WorkOrderResTxnLine_ID (int MFG_WorkOrderResTxnLine_ID)
+	{
+		if (MFG_WorkOrderResTxnLine_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_MFG_WorkOrderResTxnLine_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_MFG_WorkOrderResTxnLine_ID, Integer.valueOf(MFG_WorkOrderResTxnLine_ID));
+	}
+
+	/** Get Work Order Resource Transaction Line ID.
+		@return Work Order Resource Transaction Line ID	  */
+	public int getMFG_WorkOrderResTxnLine_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_MFG_WorkOrderResTxnLine_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	public I_M_Product getM_Product() throws RuntimeException
+    {
+		return (I_M_Product)MTable.get(getCtx(), I_M_Product.Table_Name)
+			.getPO(getM_Product_ID(), get_TrxName());	}
+
+	/** Set Product.
+		@param M_Product_ID 
+		Product, Service, Item
+	  */
+	public void setM_Product_ID (int M_Product_ID)
+	{
+		if (M_Product_ID < 1) 
+			set_Value (COLUMNNAME_M_Product_ID, null);
+		else 
+			set_Value (COLUMNNAME_M_Product_ID, Integer.valueOf(M_Product_ID));
+	}
+
+	/** Get Product.
+		@return Product, Service, Item
+	  */
+	public int getM_Product_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_M_Product_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	/** Set Processed.
+		@param Processed 
+		The document has been processed
+	  */
+	public void setProcessed (boolean Processed)
+	{
+		set_Value (COLUMNNAME_Processed, Boolean.valueOf(Processed));
+	}
+
+	/** Get Processed.
+		@return The document has been processed
+	  */
+	public boolean isProcessed () 
+	{
+		Object oo = get_Value(COLUMNNAME_Processed);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
+	}
+
+	/** Set Quantity.
+		@param QtyEntered 
+		The Quantity Entered is based on the selected UoM
+	  */
+	public void setQtyEntered (BigDecimal QtyEntered)
+	{
+		set_Value (COLUMNNAME_QtyEntered, QtyEntered);
+	}
+
+	/** Get Quantity.
+		@return The Quantity Entered is based on the selected UoM
+	  */
+	public BigDecimal getQtyEntered () 
+	{
+		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_QtyEntered);
+		if (bd == null)
+			 return Env.ZERO;
+		return bd;
+	}
+
+	/** Set Sequence.
+		@param SeqNo 
+		Method of ordering records; lowest number comes first
+	  */
+	public void setSeqNo (int SeqNo)
+	{
+		set_Value (COLUMNNAME_SeqNo, Integer.valueOf(SeqNo));
+	}
+
+	/** Get Sequence.
+		@return Method of ordering records; lowest number comes first
+	  */
+	public int getSeqNo () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_SeqNo);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	public I_C_ElementValue getUser1() throws RuntimeException
+    {
+		return (I_C_ElementValue)MTable.get(getCtx(), I_C_ElementValue.Table_Name)
+			.getPO(getUser1_ID(), get_TrxName());	}
+
+	/** Set User List 1.
+		@param User1_ID 
+		User defined list element #1
+	  */
+	public void setUser1_ID (int User1_ID)
+	{
+		if (User1_ID < 1) 
+			set_Value (COLUMNNAME_User1_ID, null);
+		else 
+			set_Value (COLUMNNAME_User1_ID, Integer.valueOf(User1_ID));
+	}
+
+	/** Get User List 1.
+		@return User defined list element #1
+	  */
+	public int getUser1_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_User1_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	public I_C_ElementValue getUser2() throws RuntimeException
+    {
+		return (I_C_ElementValue)MTable.get(getCtx(), I_C_ElementValue.Table_Name)
+			.getPO(getUser2_ID(), get_TrxName());	}
+
+	/** Set User List 2.
+		@param User2_ID 
+		User defined list element #2
+	  */
+	public void setUser2_ID (int User2_ID)
+	{
+		if (User2_ID < 1) 
+			set_Value (COLUMNNAME_User2_ID, null);
+		else 
+			set_Value (COLUMNNAME_User2_ID, Integer.valueOf(User2_ID));
+	}
+
+	/** Get User List 2.
+		@return User defined list element #2
+	  */
+	public int getUser2_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_User2_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+}
